@@ -2,7 +2,7 @@
 import subprocess
 import datetime
 
-from meerkat_logger import get_logger
+from custom_logger import get_logger
 
 import sys
 __author__ = 'cenk'
@@ -31,4 +31,4 @@ def hourly_rollup(args):
 
 hourly_rollup(sys.argv)
 
-## python meerkat_elastic_path.py ipam
+## python hourly_rollup.py ipam

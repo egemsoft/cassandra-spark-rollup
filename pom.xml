@@ -9,7 +9,7 @@
     <version>1.0</version>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>meerkat rollup</name>
+    <name>cassandra-spark-rollup</name>
 
     <properties>
         <junit.version>4.11</junit.version>

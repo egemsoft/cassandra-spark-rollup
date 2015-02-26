@@ -5,7 +5,7 @@ __author__ = 'cenk'
 import sys
 import datetime
 
-from meerkat_logger import get_logger
+from custom_logger import get_logger
 
 import time
 
@@ -38,8 +38,8 @@ def clean_up(args):
         time.sleep(300)
 
 
-# meerkat_older_timer("")
+# clean_up("")
 clean_up(sys.argv)
 
 ####usage
-## python meerkat_elastic_path.py ipam 1423785600
+## python clean_up.py ipam 1423785600
