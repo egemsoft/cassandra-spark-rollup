@@ -4,7 +4,7 @@ import logging
 
 
 def get_logger():
-    logging.basicConfig(filename='/home/sparkuser/logs/meerkat_timer.log', level=logging.DEBUG,)
+    logging.basicConfig(filename='/home/sparkuser/logs/timer.log', level=logging.DEBUG,)
     logger = logging.getLogger(__name__)
     ch = logging.StreamHandler()
     ch.setLevel(logging.DEBUG)

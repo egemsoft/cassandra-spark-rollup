@@ -1,7 +1,6 @@
-## Meerkat
+## Cassandra Spark Rollup
 ####Metric rollups with Apache Spark
 -------------------------------------
-![Alt text](etc/meerkat.jpeg)
 
 args =
         String - cassandraHost
