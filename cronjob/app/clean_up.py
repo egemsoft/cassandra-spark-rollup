@@ -41,13 +41,12 @@ def clean_up(args):
         end_time = start_time + (60 * 60)
         time.sleep(300)
 
-
     date_value = datetime.datetime.fromtimestamp(int(args[2]))
 
-    start_time = datetime.datetime(date_value.year, date_value.month, date_value.day, date_value.hour, 00)
+    start_time = datetime.datetime(date_value.year, date_value.month, date_value.day, 00, 00)
     start_time = int(start_time.strftime("%s"))
 
-    end_time = start_time + (60 * 60 *24)
+    end_time = start_time + (60 * 60 * 24)
     while end_time < task_end:
         logger.debug("End Time: %s, Start Time: %s", end_time, start_time)
         command = "nohup /data/spark/bin/spark-submit --class net.egemsoft.rrd.Main  " \
@@ -63,8 +62,8 @@ def clean_up(args):
 
         except Exception, e:
             logger.error(e.message)
-        start_time = start_time + (60 * 60 *24)
-        end_time = start_time + (60 * 60 *24)
+        start_time = start_time + (60 * 60 * 24)
+        end_time = start_time + (60 * 60 * 24)
         time.sleep(1000)
 
 
