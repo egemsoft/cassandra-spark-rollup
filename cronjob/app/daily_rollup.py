@@ -12,8 +12,9 @@ logger = get_logger()
 
 def daily_rollup(args):
     keyspace = args[1]
-    end_time = int(datetime.datetime.now().strftime("%s"))
-    end_time = int(round(end_time / 100) * 100)
+    now = datetime.datetime.now()
+    end_time = datetime.datetime(now.year, now.month, now.day, now.hour, 00)
+    end_time = int(end_time.strftime("%s"))
     start_time = end_time - (60 * 60 * 24)
     logger.debug("End Time: %s, Start Time: %s", end_time, start_time)
     command = "nohup /data/spark/bin/spark-submit --class net.egemsoft.rrd.Main  " \

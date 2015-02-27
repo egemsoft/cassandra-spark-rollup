@@ -17,9 +17,10 @@ def elastic_path(args):
         start_time = int(args[3])
         end_time = int(args[4])
     except:
-        end_time = int(datetime.datetime.now().strftime("%s"))
-        end_time = int(round(end_time / 100) * 100)
-        start_time = end_time - (60 * 8)
+        now = datetime.datetime.now()
+        end_time = datetime.datetime(now.year, now.month, now.day, now.hour, 00)
+        end_time = int(end_time.strftime("%s"))
+        start_time = end_time - (60 * 15)
     logger.debug("End Time: %s, Start Time: %s", end_time, start_time)
     command = "nohup /data/spark/bin/spark-submit --class net.egemsoft.rrd.elasticPaths.Main  " \
               "--master spark://ipam-ulus-db-2  target/cassandra-spark-rollup-1.0-driver.jar " \
