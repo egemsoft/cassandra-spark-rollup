@@ -43,7 +43,7 @@ def clean_up(args):
 
     date_value = datetime.datetime.fromtimestamp(int(args[2]))
 
-    start_time = datetime.datetime(date_value.year, date_value.month, date_value.day, 00, 00)
+    start_time = datetime.datetime(date_value.year, date_value.month, date_value.day, 02, 00)
     start_time = int(start_time.strftime("%s"))
 
     end_time = start_time + (60 * 60 * 24)
