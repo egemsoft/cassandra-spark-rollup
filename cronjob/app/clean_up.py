@@ -36,7 +36,6 @@ def clean_up(args):
             logger.debug(p)
 
         except Exception, e:
-            pass
             logger.error(e.message)
         start_time = start_time + (60 * 60)
         end_time = start_time + (60 * 60)
@@ -63,7 +62,6 @@ def clean_up(args):
             logger.debug(p)
 
         except Exception, e:
-            pass
             logger.error(e.message)
         start_time = start_time + (60 * 60 *24)
         end_time = start_time + (60 * 60 *24)
