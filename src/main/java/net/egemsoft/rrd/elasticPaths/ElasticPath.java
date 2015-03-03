@@ -80,8 +80,8 @@ public class ElasticPath implements Serializable, Elastic {
     Settings settings = ImmutableSettings.settingsBuilder().put("cluster.name", "ttsearch").build();
     Client client = new TransportClient(settings)
         .addTransportAddress(new InetSocketTransportAddress("ttsearch1", 9300))
-        .addTransportAddress(new InetSocketTransportAddress("ttsearch2", 9300))
-        .addTransportAddress(new InetSocketTransportAddress("ttsearch3", 9300));
+        //.addTransportAddress(new InetSocketTransportAddress("ttsearch2", 9300))
+        //.addTransportAddress(new InetSocketTransportAddress("ttsearch3", 9300));
 
     BulkRequestBuilder bulkBuilder = client.prepareBulk();
     int counter = 1;
