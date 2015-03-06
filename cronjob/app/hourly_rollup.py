@@ -19,7 +19,7 @@ def hourly_rollup(args):
     logger.debug("End Time: %s, Start Time: %s", end_time, start_time)
     command = "nohup /data/spark/bin/spark-submit --class net.egemsoft.rrd.Main  " \
               "--master spark://ipam-ulus-db-2  target/cassandra-spark-rollup-1.0-driver.jar " \
-              " spMaster=spark://ipam-ulus-db-2:7077 casHost=ipam-ulus-db-1 " \
+              " spMaster=spark://ipam-ulus-db-2:7077 casHost=ipam-ulus-db-2 " \
               "casKeyspace=%s casTable=metric rollup=300 start=%s end=%s destRollup=3600 ttl=7776000 &\n" % (
                   keyspace,start_time, end_time)
     logger.debug("Command: %s", command)

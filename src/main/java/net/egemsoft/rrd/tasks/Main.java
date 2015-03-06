@@ -19,7 +19,7 @@ public class Main {
 
     Map map = new HashMap();
     map.put("spmaster", "local");
-    map.put("cashost", "ipam-ulus-db-1");
+    map.put("cashost", "ipam-ulus-db-2");
     map.put("caskeyspace", "test");
     map.put("castable", "metric");
     map.put("start", "1");
