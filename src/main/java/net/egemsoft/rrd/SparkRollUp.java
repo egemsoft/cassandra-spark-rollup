@@ -76,6 +76,16 @@ public class SparkRollUp implements Serializable {
 
 
   private void doSelect() {
+
+  }
+
+  public String getDestinationTable() {
+    return getCassandraKeyspace() + '.' + getCassandraTable();
+  }
+
+  public void run() {
+    doSelect();
+
     final Map<String, Long> timePeriod = getTimePeriod();
     logger.info("Do Select Starts");
     SparkConfig sparkConfig = new SparkConfig(sparkMaster, cassandraHost, appName);
@@ -99,14 +109,6 @@ public class SparkRollUp implements Serializable {
     });
 
     logger.info("Do Select Finishes");
-  }
-
-  public String getDestinationTable() {
-    return getCassandraKeyspace() + '.' + getCassandraTable();
-  }
-
-  public void run() {
-    doSelect();
 
     logger.info("Aggregate Algorithm");
     AggregateAlgorithm aggregateAlgorithm = new AggregateAlgorithm();
@@ -114,9 +116,8 @@ public class SparkRollUp implements Serializable {
     JavaPairRDD<String, Double> javaPair = aggregateAlgorithm.getResults();
 
     logger.info("Persist");
-    logger.info(cassandraHost);
     PersistToCassandra persistToCassandra = new PersistToCassandra(cassandraHost, sparkMaster, appName, getDestinationTable());
-    //persistToCassandra.createTableIfNotExists();
     persistToCassandra.persist(javaPair, getTimePeriod().get("start"), destinationRollup, ttl);
+    sparkContext.stop();
   }
 }

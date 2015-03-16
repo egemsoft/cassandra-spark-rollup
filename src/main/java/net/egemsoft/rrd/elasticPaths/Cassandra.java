@@ -74,6 +74,7 @@ public class Cassandra implements Serializable {
     }
     logger.info(counter);
     action.processArrayList(resultMap);
+    sparkContext.stop();
   }
 
 }
