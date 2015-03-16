@@ -30,6 +30,7 @@ public class Main {
     Cassandra cassandra = new Cassandra(map);
     cassandra.distinct(parser, action);
 
+    logger.info("Finish");
   }
 
 }

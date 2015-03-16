@@ -41,14 +41,12 @@ public class Cassandra implements Serializable {
     this.appName = "ElasticPath" + '-' + this.cassandraKeyspace;
   }
 
-  public void distinct(final Parser parser, Action action) {
+  public void distinct(Parser parser, Action action) {
     SparkConfig sparkConfig = new SparkConfig(sparkMaster, cassandraHost, appName);
 
     SparkContext sparkContext = new SparkContext(sparkConfig.getSparkConf());
     SparkContextJavaFunctions sparkFunctions = CassandraJavaUtil.javaFunctions(sparkContext);
     ReadConf readConf = new ReadConf(10000000, 10000, ConsistencyLevel.LOCAL_ONE);
-    //long end = Math.round(new Date().getTime() / 1000);
-    //long start = end - (60 * 60 * 2);
     logger.info(String.format("Start Time: %s, End Time: %s", start, end));
 
     System.out.println(String.format("Start Time: %s, End Time: %s", start, end));
@@ -69,9 +67,9 @@ public class Cassandra implements Serializable {
     for (Tuple2<String, Iterable<CassandraRow>> cassandraRow : groupedData.collect()) {
 
       resultMap.addAll(parser.parse(cassandraRow._1()));
-
       counter++;
     }
+
     logger.info(counter);
     action.processArrayList(resultMap);
 

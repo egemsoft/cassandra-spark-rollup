@@ -46,7 +46,7 @@ public class PersistToCassandra implements Serializable {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    cassandraConnector.closestLiveHost();
+
   }
 
   protected void createTableIfNotExists() {

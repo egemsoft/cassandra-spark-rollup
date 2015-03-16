@@ -113,7 +113,7 @@ public class SparkRollUp implements Serializable {
     logger.info("Persist");
     PersistToCassandra persistToCassandra = new PersistToCassandra(cassandraHost, sparkMaster, appName, getDestinationTable());
     persistToCassandra.persist(javaPair, getTimePeriod().get("start"), destinationRollup, ttl);
-
+    logger.info("Finish");
     sparkContext.clearFiles();
     sparkContext.stop();
   }
