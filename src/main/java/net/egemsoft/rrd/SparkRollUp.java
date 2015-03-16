@@ -75,16 +75,11 @@ public class SparkRollUp implements Serializable {
   }
 
 
-  private void doSelect() {
-
-  }
-
   public String getDestinationTable() {
     return getCassandraKeyspace() + '.' + getCassandraTable();
   }
 
   public void run() {
-    doSelect();
 
     final Map<String, Long> timePeriod = getTimePeriod();
     logger.info("Do Select Starts");
@@ -118,6 +113,8 @@ public class SparkRollUp implements Serializable {
     logger.info("Persist");
     PersistToCassandra persistToCassandra = new PersistToCassandra(cassandraHost, sparkMaster, appName, getDestinationTable());
     persistToCassandra.persist(javaPair, getTimePeriod().get("start"), destinationRollup, ttl);
+
+    sparkContext.clearFiles();
     sparkContext.stop();
   }
 }
