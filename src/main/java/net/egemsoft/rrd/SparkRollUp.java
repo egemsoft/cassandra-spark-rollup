@@ -85,7 +85,7 @@ public class SparkRollUp implements Serializable {
     logger.info("Do Select Starts");
     SparkConfig sparkConfig = new SparkConfig(sparkMaster, cassandraHost, appName);
     SparkContext sparkContext = new SparkContext(sparkConfig.getSparkConf());
-    ReadConf readConf = new ReadConf(10000000, 10000, ConsistencyLevel.LOCAL_ONE);
+    ReadConf readConf = new ReadConf(100000, 1000, ConsistencyLevel.LOCAL_ONE);
     SparkContextJavaFunctions sparkFunctions = CassandraJavaUtil.javaFunctions(sparkContext);
 
     Long start = timePeriod.get("start");
