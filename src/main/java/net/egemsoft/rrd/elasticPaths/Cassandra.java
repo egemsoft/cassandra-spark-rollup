@@ -46,7 +46,7 @@ public class Cassandra implements Serializable {
 
     SparkContext sparkContext = new SparkContext(sparkConfig.getSparkConf());
     SparkContextJavaFunctions sparkFunctions = CassandraJavaUtil.javaFunctions(sparkContext);
-    ReadConf readConf = new ReadConf(10000000, 10000, ConsistencyLevel.LOCAL_ONE);
+    ReadConf readConf = new ReadConf(100000, 1000, ConsistencyLevel.LOCAL_ONE);
     logger.info(String.format("Start Time: %s, End Time: %s", start, end));
 
     System.out.println(String.format("Start Time: %s, End Time: %s", start, end));
